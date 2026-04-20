@@ -1,7 +1,36 @@
 doctype html
-html
+html(lang='en')
+
   head
+    //Page setup 
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    //TODO add fonds from BrandGuidlines to css 
+
   body
+    //site header and navigation
+    header.site-header 
+      .container.header-inner
+        a.logo(href='/', aria-label='Downtown Donuts home') Downtown Donuts
+        nav.site-nav(aria-label='Main navigation')
+          ul.nav-list
+            li
+              a(href='/') Home
+            li
+              a(href='/menu') Menu
+            li
+              a(href='/about') About Us
+            li
+              a(href='/comments') Comments
+            li
+              a.order-link(href='https://www.doordash.com/', target='_blank', rel='noopener noreferrer') Order Online
+
+  main
     block content
+  //site footer
+  footer.site-footer
+    .container
+        p Downtown Donuts · Family-owned since 1992
+        p Cozy coffee, fresh donuts, and a downtown tradition.
