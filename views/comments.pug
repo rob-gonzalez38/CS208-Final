@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  section.page-intro
+    .container
+      h1.section-title Customer Comments
+      p
+        | Read what customers are saying and share your own experience.
+      p
+        | The full-stack comment form and saved comments will be connected in a later step.
+
+  section.comments-preview
+    .container
+      .comments-layout
+        article.comment-form-card
+          h2 Leave a comment
+          form
+            .form-group
+              label(for='name') Name
+              input(type='text', id='name', name='name', placeholder='Your name')
+
+            .form-group
+              label(for='comment') Comment
+              textarea(id='comment', name='comment', rows='5', placeholder='Share your experience')
+
+            button.button(type='submit') Submit Comment
+
+        article.comment-list-card
+          h2 Recent comments
+          p Comment functionality will be connected to the server in a later step.
