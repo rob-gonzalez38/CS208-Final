@@ -151,4 +151,129 @@ textarea:focus-visible {
   .logo {
     font-size: 2.5rem;
   }
+
+  .hero {
+    background-color: var(--color-green);
+    color: var(--color-light);
+    padding: 5rem 0;
+    }
+
+  .hero-content {
+    max-width: 700px;
+  }
+
+  .hero-kicker {
+    margin: 0 0 1rem;
+    color: var(--color-gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+  }
+
+  .hero-title {
+    margin: 0 0 1rem;
+    font-size: 2.5rem;
+    line-height: 1.15;
+  }
+
+  .brand-script {
+    display: inline-block;
+    color: var(--color-gold);
+    font-family: var(--font-brand);
+    font-size: 1.3em;
+    font-weight: normal;
+  }
+
+  .hero-text {
+    max-width: 60ch;
+    margin: 0 0 1.75rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /*button styles for homepage actions*/
+  .button {
+    display: inline-block;
+    padding: 0.85rem 1.4rem;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    background-color: var(--color-gold);
+    color: var(--color-green);
+  }
+
+  .button:hover,
+  .button:focus-visible {
+    opacity: 0.92;
+  }
+
+  .button-secondary {
+    background-color: transparent;
+    color: var(--color-light);
+    border-color: var(--color-light);
+  }
+
+  .button-secondary:hover,
+  .button-secondary:focus-visible {
+    background-color: var(--color-light);
+    color: var(--color-green);
+  }
+
+  /* Homepage highlight cards */
+  .home-highlights {
+    padding: 4rem 0;
+  }
+
+  .section-title {
+    margin: 0 0 1.5rem;
+    font-size: 2rem;
+  }
+
+  .highlights-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .highlights-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .highlight-card {
+    padding: 1.5rem;
+    border-radius: 18px;
+    background-color: #ffffff;
+    border: 1px solid var(--color-gold);
+  }
+
+  .highlight-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .highlight-card p {
+    margin-bottom: 0;
+  }
+
+  /* Small-screen homepage adjustments */
+  @media (max-width: 800px) {
+    .hero {
+      padding: 4rem 0;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .highlights-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+
 }
