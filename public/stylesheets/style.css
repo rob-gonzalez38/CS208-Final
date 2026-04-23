@@ -275,5 +275,117 @@ textarea:focus-visible {
     }
   }
 
+  .page-intro {
+    padding: 4rem 0 2rem;
+  }
+
+  .page-intro p {
+    max-width: 65ch;
+  }
+
+  /* Menu page */
+  .menu-preview {
+    padding-bottom: 4rem;
+  }
+
+  .menu-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .menu-card {
+    padding: 1.5rem;
+    border-radius: 18px;
+    background-color: #ffffff;
+    border: 1px solid var(--color-gold);
+  }
+
+  .menu-card h2 {
+    margin-top: 0;
+  }
+
+  .menu-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  /* About page */
+  .about-story {
+    padding-bottom: 4rem;
+  }
+
+  .about-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .about-card {
+    padding: 1.5rem;
+    border-radius: 18px;
+    background-color: #ffffff;
+    border: 1px solid var(--color-gold);
+  }
+
+  .about-card h2 {
+    margin-top: 0;
+  }
+
+  /* Comments page */
+  .comments-preview {
+    padding-bottom: 4rem;
+  }
+
+  .comments-layout {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .comment-form-card,
+  .comment-list-card {
+    padding: 1.5rem;
+    border-radius: 18px;
+    background-color: #ffffff;
+    border: 1px solid var(--color-gold);
+  }
+
+  .comment-form-card h2,
+  .comment-list-card h2 {
+    margin-top: 0;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid #b7b7b7;
+    border-radius: 12px;
+    background-color: #ffffff;
+  }
+
+  /* Inner page responsiveness */
+  @media (max-width: 800px) {
+    .menu-grid,
+    .about-grid,
+    .comments-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+
+
 
 }
