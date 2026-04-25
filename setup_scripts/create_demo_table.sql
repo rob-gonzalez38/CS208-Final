@@ -7,3 +7,11 @@ CREATE TABLE IF NOT EXISTS todos (
     task VARCHAR(255) NOT NULL,
     completed BOOLEAN DEFAULT FALSE
 );
+
+/* Comments table for customer feedback */
+CREATE TABLE IF NOT EXISTS comments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    comment TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
