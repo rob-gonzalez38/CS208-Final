@@ -32,6 +32,24 @@ router.get('/comments', function(req, res, next) {
 });
 
 
+/* Add new customer comment */
+router.post('/comments', function(req, res, next) {
+  const { name, comment } = req.body;
+
+  req.db.query(
+    'INSERT INTO comments (name, comment) VALUES (?, ?);',
+    [name, comment],
+    (err, results) => {
+      if (err) {
+        console.error('Error adding comment:', err);
+        return res.status(500).send('Error adding comment');
+      }
+
+      res.redirect('/comments');
+    }
+  );
+});
+
 router.post('/create', function (req, res, next) {
     const { task } = req.body;
     try {

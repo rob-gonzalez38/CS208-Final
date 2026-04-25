@@ -13,7 +13,7 @@ block content
         article.comment-form-card
           h2 Leave a comment
 
-          form
+          form(method='POST', action='/comments')
             .form-group
               label(for='name') Name
               input(type='text', id='name', name='name', placeholder='Your name')
