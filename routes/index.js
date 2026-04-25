@@ -1,5 +1,11 @@
 var express = require('express');
 var router = express.Router();
+// Removes characters commonly used in HTML/script injection
+function sanitizeInput(input) {
+  return input
+    .replace(/[<>]/g, '')
+    .replace(/javascript:/gi, '');
+}
 
 /* GET home page. */
 router.get('/', function(req, res, next){
@@ -34,8 +40,8 @@ router.get('/comments', function(req, res, next) {
 
 /* Add new customer comment */
 router.post('/comments', function(req, res, next) {
-  const name = req.body.name ? req.body.name.trim() : '';
-  const comment = req.body.comment ? req.body.comment.trim() : '';
+  const name = req.body.name ? sanitizeInput(req.body.name.trim()) : '';
+  const comment = req.body.comment ? sanitizeInput(req.body.comment.trim()) : '';
 
   //rerender page with validation message
   function showCommentError(message) {
