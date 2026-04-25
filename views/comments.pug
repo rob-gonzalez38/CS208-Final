@@ -6,14 +6,13 @@ block content
       h1.section-title Customer Comments
       p
         | Read what customers are saying and share your own experience.
-      p
-        | The full-stack comment form and saved comments will be connected in a later step.
 
   section.comments-preview
     .container
       .comments-layout
         article.comment-form-card
           h2 Leave a comment
+
           form
             .form-group
               label(for='name') Name
@@ -27,4 +26,13 @@ block content
 
         article.comment-list-card
           h2 Recent comments
-          p Comment functionality will be connected to the server in a later step.
+
+          if comments && comments.length
+            each comment in comments
+              article.comment-item
+                h3= comment.name
+                p= comment.comment
+                small= comment.created_at
+
+          else 
+            p No comments yet. Be the first to share your experience.

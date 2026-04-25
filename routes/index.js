@@ -18,7 +18,17 @@ router.get('/about', function(req, res, next) {
 
 /* Comments page */
 router.get('/comments', function(req, res, next) {
-  res.render('comments', { title: 'Customer Comments' });
+  req.db.query('SELECT * FROM comments ORDER BY created_at DESC;', (err, results) => {
+    if (err) {
+      console.error('Error fetching comments:', err);
+      return res.status(500).send('Error loading comments');
+    }
+
+    res.render('comments', {
+      title: 'Customer Comments',
+      comments: results
+    });
+  });
 });
 
 
