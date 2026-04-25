@@ -12,6 +12,7 @@ block content
       .comments-layout
         article.comment-form-card
           h2 Leave a comment
+
             if errorMessage
               p.form-error= errorMessage
 
@@ -40,3 +41,14 @@ block content
 
           else 
             p No comments yet. Be the first to share your experience.
+            
+
+         if totalPages && totalPages > 1
+            nav.pagination(aria-label='Comment pagination')
+              if currentPage > 1
+                a(href=`/comments?page=${currentPage - 1}`) Previous
+
+              span Page #{currentPage} of #{totalPages}
+
+              if currentPage < totalPages
+                a(href=`/comments?page=${currentPage + 1}`) Next 

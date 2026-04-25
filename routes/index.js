@@ -24,16 +24,36 @@ router.get('/about', function(req, res, next) {
 
 /* Comments page */
 router.get('/comments', function(req, res, next) {
-  req.db.query('SELECT * FROM comments ORDER BY created_at DESC;', (err, results) => {
-    if (err) {
-      console.error('Error fetching comments:', err);
+  const page = parseInt(req.query.page) || 1;
+  const limit = 10;
+  const offset = (page - 1) * limit;
+
+  //count comments first so the page can show previous/next links correctly
+  req.db.query('SELECT COUNT(*) AS total FROM comments;', (countErr, countResults) => {
+    if (countErr) {
+      console.error('Error counting comments:', countErr);
       return res.status(500).send('Error loading comments');
     }
 
-    res.render('comments', {
-      title: 'Customer Comments',
-      comments: results
-    });
+    const totalComments = countResults[0].total;
+    const totalPages = Math.ceil(totalComments / limit);
+
+    req.db.query('SELECT * FROM comments ORDER BY created_at DESC LIMIT ? OFFSET ?;',
+      [limit, offset],
+      (err, results) => {
+        if (err) {
+          console.error('Error fetching comments:', err);
+          return res.status(500).send('Error loading comments');
+        }
+
+        res.render('comments', {
+          title: 'Customer Comments',
+          comments: results,
+          currentPage: page,
+          totalPages: totalPages
+        });
+      }
+    );
   });
 });
 
