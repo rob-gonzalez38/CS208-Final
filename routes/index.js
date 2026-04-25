@@ -34,7 +34,18 @@ router.get('/comments', function(req, res, next) {
 
 /* Add new customer comment */
 router.post('/comments', function(req, res, next) {
-  const { name, comment } = req.body;
+  const name = req.body.name ? req.body.name.trim() : '';
+  const comment = req.body.comment ? req.body.comment.trim() : '';
+
+  //Validation
+  if (!name || !comment) {
+    return res.status(400).send('Name and comment are required.');
+  }
+
+  //No long submissions please
+  if (name.length > 100 || comment.length > 1001) {
+    return res.status(400).send('Name or comment is too long.');
+  }
 
   req.db.query(
     'INSERT INTO comments (name, comment) VALUES (?, ?);',
