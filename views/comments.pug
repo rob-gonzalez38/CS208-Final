@@ -12,15 +12,19 @@ block content
       .comments-layout
         article.comment-form-card
           h2 Leave a comment
+            if errorMessage
+              p.form-error= errorMessage
 
           form(method='POST', action='/comments')
             .form-group
               label(for='name') Name
-              input(type='text', id='name', name='name', placeholder='Your name')
+              input(type='text', id='name', name='name', 
+                    placeholder='Your name', value=formData ? formData.name : '')
 
             .form-group
               label(for='comment') Comment
-              textarea(id='comment', name='comment', rows='5', placeholder='Share your experience')
+              textarea(id='comment', name='comment', rows='5', 
+                      placeholder='Share your experience')= formData ? formData.comment : ''
 
             button.button(type='submit') Submit Comment
 

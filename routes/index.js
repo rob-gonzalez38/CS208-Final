@@ -37,6 +37,23 @@ router.post('/comments', function(req, res, next) {
   const name = req.body.name ? req.body.name.trim() : '';
   const comment = req.body.comment ? req.body.comment.trim() : '';
 
+  //rerender page with validation message
+  function showCommentError(message) {
+    req.db.query('SELECT * FROM comments ORDER BY created_at DESC;', (err, results) => {
+      if (err) {
+        console.error('Error fetching comments after validation error:', err);
+        return res.status(500).send('Error loading comments');
+      }
+
+      res.status(400).render('comments', {
+        title: 'Customer Comments',
+        comments: results,
+        errorMessage: message,
+        formData: { name, comment }
+      });
+    });
+  }
+
   //Validation
   if (!name || !comment) {
     return res.status(400).send('Name and comment are required.');
