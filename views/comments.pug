@@ -45,7 +45,7 @@ block content
             p No comments yet. Be the first to share your experience.
             
 
-         if totalPages && totalPages > 1
+          if totalPages && totalPages > 1
             nav.pagination(aria-label='Comment pagination')
               if currentPage > 1
                 a(href=`/comments?page=${currentPage - 1}`) Previous
