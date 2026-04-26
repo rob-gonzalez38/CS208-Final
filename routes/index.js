@@ -82,12 +82,14 @@ router.post('/comments', function(req, res, next) {
 
   //Validation
   if (!name || !comment) {
-    return res.status(400).send('Name and comment are required.');
+    return showCommentError(
+      'Please enter both your name and a comment.');
   }
 
   //No long submissions please
-  if (name.length > 100 || comment.length > 1001) {
-    return res.status(400).send('Name or comment is too long.');
+  if (name.length > 100 || comment.length > 1000) {
+    return showCommentError(
+      'Please keep your name under 100 characters and your comment under 1000 characters.');
   }
 
   req.db.query(
