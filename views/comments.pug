@@ -13,19 +13,21 @@ block content
         article.comment-form-card
           h2 Leave a comment
 
-            if errorMessage
-              p.form-error= errorMessage
+          if errorMessage
+            p.form-error= errorMessage
 
           form(method='POST', action='/comments')
             .form-group
               label(for='name') Name
               input(type='text', id='name', name='name', 
-                    placeholder='Your name', value=formData ? formData.name : '')
+                    placeholder='Your name', maxlength='100', value=formData ? formData.name : '')
 
             .form-group
               label(for='comment') Comment
               textarea(id='comment', name='comment', rows='5', 
-                      placeholder='Share your experience')= formData ? formData.comment : ''
+                      placeholder='Share your experience', maxlength='1000', 
+                      required, aria-describedby='comment-help')= formData ? formData.comment : ''
+              small#comment-help.form-help Comments must be 1000 characters or fewer.
 
             button.button(type='submit') Submit Comment
 
